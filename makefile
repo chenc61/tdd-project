@@ -5,6 +5,6 @@ js:
 	node js/test_money.js
 
 go:
-	go test -v go/money_test.go
+	cd go && go test -v &&  cd ..
 
 .PHONY: py js go
