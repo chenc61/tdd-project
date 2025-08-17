@@ -36,13 +36,23 @@ class MoneyTest {
         assert.deepStrictEqual(portfolio.evaluate("USD"), expectedValue);
     }
 
-    testAdditionOfDollarsAndWons(){
+    testAdditionOfDollarsAndWons() {
         let oneDollar = new Money(1, "USD");
         let elevenHundredWons = new Money(1100, "KRW");
         let portfolio = new Portfolio();
         portfolio.add(oneDollar, elevenHundredWons);
         let expectedValue = new Money(2200, "KRW");
         assert.deepStrictEqual(portfolio.evaluate("KRW"), expectedValue);
+    }
+
+    testAdditionWithMultipleMissingExchangeRates() {
+        let oneDollar = new Money(1, "USD");
+        let oneEuro = new Money(1, "EUR");
+        let oneWon = new Money(1, "KRW");
+        let portfolio = new Portfolio();
+        portfolio.add(oneDollar, oneEuro, oneWon);
+        let expectedError = new Error("Missing exchange rate(s):[USD->Kalganid,EUR->Kalganid,KRW->Kalganid]");
+        assert.throws(() => portfolio.evaluate("Kalganid"), expectedError);
     }
 
     getAllTestMethods() {
