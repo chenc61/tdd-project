@@ -73,5 +73,13 @@ class TestMoney(unittest.TestCase):
         ):
             bank.convert(tenEuros,"Kalganid")
 
+    def testConversion(self):
+        tenEuros = Money(10,"EUR")
+        self.assertEqual(self.bank.convert(tenEuros,"USD"),Money(12,"USD"))
+
+        self.bank.addExchangeRate("EUR","USD",1.3)
+        self.assertEqual(self.bank.convert(tenEuros,"USD"),Money(13,"USD"))
+
+
 if __name__ == '__main__':
     unittest.main()

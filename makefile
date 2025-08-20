@@ -5,6 +5,6 @@ js:
 	node js/test_money.js
 
 go:
-	cd go && go test -v &&  cd ..
+	cd go && go test -v -shuffle on ./... &&  cd ..
 
 .PHONY: py js go
