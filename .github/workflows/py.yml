@@ -7,8 +7,8 @@ jobs:
     name: Build
     strategy:
       matrix:
-      python-version: [ 3.9.x, 3.10.x ]
-      platform: [ ubuntu-latest, macos-latest, windows-latest]
+        python-version: [ 3.9.x, 3.10.x ]
+        platform: [ ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.platform }}
     steps:
     - name: Set up Python ${{ matrix.python-version }}
